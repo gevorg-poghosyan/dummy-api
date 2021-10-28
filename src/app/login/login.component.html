@@ -1,1 +1,7 @@
-<p>login works!</p>
+<p>{{count}}</p>
+  <button (click)="increase($event)">Click</button>
+  <input type= "text" [(ngModel)]="name"/>
+  <p #userName>{{name}}</p>
+  <p>{{userName.textContent}}</p>
+  <ng-content></ng-content>
+  

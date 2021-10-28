@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+ 
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
-  constructor() { }
+ count: number = 0;
 
-  ngOnInit(): void {
+ increase(event: Event) : void {
+   this.count++;
+   console.log(event);
+ };
+ name: string="Tom"; 
+
+  constructor() { this.log(`constructor`); }
+
+  ngOnInit() { this.log(`onInit`); }
+
+  
+  private log(msg: string){
+    console.log(msg);
+    
   }
 
+  ngOnDestroy() { this.log(`onDestroy`); }
+ 
 }

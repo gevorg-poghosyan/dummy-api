@@ -1,0 +1,10 @@
+.userPicture{
+    width: 150px;
+    height: 150px;
+
+}
+
+.userContainer{
+    display: inline;
+    border: 2px solid;
+}
