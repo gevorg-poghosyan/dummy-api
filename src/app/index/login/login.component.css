@@ -1,0 +1,19 @@
+.inputEmail.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.inputEmail.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.inputPassword.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.inputPassword.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.btn :disabled {
+background-color: green;
+}

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'https://dummyapi.io/data/v1/user'
+  
 };
 
 /*

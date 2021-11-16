@@ -1,0 +1,38 @@
+<div class="container">
+    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-control">
+            <label>Email</label> <br>
+            <input class="inputEmail" type="text" placeholder="Email" formControlName="email">
+            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="validation">
+                <!-- <small *ngIf = "form.get('email')?.errors?.required">
+                   email field cannot be empty 
+                </small>
+                <small *ngIf = "form.get('email')?.errors?.email">
+                   invalid email address
+                 </small> -->
+                <small>
+                    {{ errorMessages.loginMessage }}
+                </small>
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Pasword</label> <br>
+            <input class="inputPassword" type="password" placeholder="password" formControlName="password">
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="validation">
+                <!-- <small *ngIf = "form.get('password')?.errors?.required">
+                   password field cannot be empty 
+                </small>
+                <small *ngIf = "form.get('password')?.errors?.minlength">
+                   the length must be at least {{form.get('password')?.errors?.minlength?.requiredLength}}.
+                   now the number of simvols {{form.get('password')?.errors?.minlength?.actualLength}}
+                 </small> -->
+                <small>
+                    {{ errorMessages.passwordMessage }}
+                </small>
+
+            </div>
+        </div>
+        <button class="btn" type="submit" [disabled]="form?.invalid">Submit</button>
+    </form>
+</div>

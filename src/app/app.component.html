@@ -1,9 +1,13 @@
-<!-- <p>{{title}}</p> -->
-<!-- <input [(ngModel)]="title"> -->
-<!-- <app-login></app-login> -->
-<!-- <app-login><h2>hello</h2></app-login> -->
-<!-- <app-second [userName]="name" [userAge]="age"> 
-    spitak
-</app-second> -->
-<!-- <input type="text" [(ngModel)]="name"> -->
-<app-dummy-api></app-dummy-api>
+<nav class="navbar">
+    <ul>
+        <li><a [routerLink]="['/']">Log In</a></li>
+        <li><a [routerLink]="['/signup']">Sign Up</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="list">
+        <router-outlet></router-outlet>
+    </div>
+    
+</div>
+

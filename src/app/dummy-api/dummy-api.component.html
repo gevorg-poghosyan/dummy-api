@@ -1,7 +1,0 @@
-<div>
-    <div class="userContainer"  *ngFor = "let user of data?.data" (click)="showUser(user?.id)">
-        <img class="userPicture" src= {{user.picture}}>
-    </div>
-</div>
-
-<nz-demo-modal-basic (isVisibleChange)="onIsVisibleChange($event)" [(isVisible)]="isVisible">Hello World</nz-demo-modal-basic>
