@@ -1,1 +1,54 @@
-<p>signup works!</p>
+<div class="container">
+    <form [formGroup]='form' class="signupform" (ngSubmit)="submit()">
+        <div class="nameContainer">
+            <label>Name</label>
+            <input class="nameInput" type="text" ormControlName="name">
+            <div>
+                <small>
+
+                </small>
+            </div>
+        </div>
+        <div class="surnameContainer">
+            <label>Surname</label>
+            <input class="surnameInput" type="text" formControlName="surname">
+            <div>
+                <small>
+
+                </small>
+            </div>
+        </div>
+        <div class="emailContainer">
+            <label>Email</label>
+            <input class="emailInput" type="text" formControlName="email">
+            <div>
+                <small>
+
+                </small>
+            </div>
+        </div>  
+        <div class="passContainer" >
+            <label>Password</label>
+            <input class="passInput" type="text" formControlName="password">
+            <div>
+                <small>
+                    
+                </small>
+            </div>
+        </div>  
+        <div class="confpassContainer">
+            <label>confirm password</label>
+            <input class="passInput" type="text" formControlName="confirmPassword">
+            <div>
+                <small>
+                    
+                </small>
+            </div>
+        </div> 
+        <div class="phoneContainer">
+            <label>phone</label>
+            <input class="phoneInput" type="text">
+        </div>
+        <button type="submit">sign up</button>
+    </form>
+</div>
