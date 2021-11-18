@@ -1,0 +1,15 @@
+.emailInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.emailInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.passInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.passInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}

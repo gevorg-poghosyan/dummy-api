@@ -2,46 +2,46 @@
     <form [formGroup]='form' class="signupform" (ngSubmit)="submit()">
         <div class="nameContainer">
             <label>Name</label>
-            <input class="nameInput" type="text" ormControlName="name">
-            <div>
+            <input class="nameInput" type="text" formControlName="name">
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="validation">
                 <small>
-
+                    {{errorMessages.nameMessage}}
                 </small>
             </div>
         </div>
         <div class="surnameContainer">
             <label>Surname</label>
             <input class="surnameInput" type="text" formControlName="surname">
-            <div>
+            <div *ngIf="form.get('surname')?.invalid" class="validation">
                 <small>
-
+                    {{errorMessages.surnameMessage}}
                 </small>
             </div>
         </div>
         <div class="emailContainer">
             <label>Email</label>
             <input class="emailInput" type="text" formControlName="email">
-            <div>
+            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
                 <small>
-
+                    {{errorMessages.emailMessage}}
                 </small>
             </div>
         </div>  
         <div class="passContainer" >
             <label>Password</label>
             <input class="passInput" type="text" formControlName="password">
-            <div>
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
                 <small>
-                    
+                    {{errorMessages.passwordMessage}}  
                 </small>
             </div>
         </div>  
         <div class="confpassContainer">
             <label>confirm password</label>
             <input class="passInput" type="text" formControlName="confirmPassword">
-            <div>
+            <div *ngIf="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched">
                 <small>
-                    
+                    {{errorMessages.confPassMessage}} 
                 </small>
             </div>
         </div> 
@@ -52,3 +52,6 @@
         <button type="submit">sign up</button>
     </form>
 </div>
+
+<!-- <small *ngIf="form.get('password').errors?.required" [errorMessage]="errorMessages.emailMessage"></small>
+<small *ngIf="form.get('password').errors?.required" [errorMessage]="errorMessages.emailMessage"></small> -->

@@ -10,6 +10,8 @@ export class MyValidators {
     }
    static toCheckedPassword(control: FormControl): {[key: string]: boolean} | null {
     //    debugger
+    console.log(control);
+    
        console.log(control.parent?.value['password'] === control.value);
        return null;
        
