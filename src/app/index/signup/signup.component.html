@@ -5,16 +5,16 @@
             <input class="nameInput" type="text" formControlName="name">
             <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="validation">
                 <small>
-                    {{errorMessages.nameMessage}}
+                    name field cannot be empty
                 </small>
             </div>
         </div>
         <div class="surnameContainer">
             <label>Surname</label>
-            <input class="surnameInput" type="text" formControlName="surname">
-            <div *ngIf="form.get('surname')?.invalid" class="validation">
+            <input class="surNameInput" type="text" formControlName="surname">
+            <div *ngIf="form.get('surname')?.invalid && form.get('surname')?.touched" class="validation">
                 <small>
-                    {{errorMessages.surnameMessage}}
+                    surname field cannot be empty
                 </small>
             </div>
         </div>
@@ -23,35 +23,37 @@
             <input class="emailInput" type="text" formControlName="email">
             <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
                 <small>
-                    {{errorMessages.emailMessage}}
+                    {{form.controls.email.errors?.['required']? 'name field cannot be empty':'wrong email' }}
                 </small>
             </div>
-        </div>  
-        <div class="passContainer" >
+        </div>
+        <div class="passContainer">
             <label>Password</label>
             <input class="passInput" type="text" formControlName="password">
             <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
                 <small>
-                    {{errorMessages.passwordMessage}}  
+                    {{form.controls.password.errors?.['required']? 'password field cannot be empty':'wrong password' }}
                 </small>
             </div>
-        </div>  
+        </div>
         <div class="confpassContainer">
             <label>confirm password</label>
-            <input class="passInput" type="text" formControlName="confirmPassword">
-            <div *ngIf="form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched">
+            <input class="confPassInput" type="text" formControlName="confirmPassword">
+            <div *ngIf="form.controls.confirmPassword.errors?.['notSame'] && form.get('confirmPassword')?.touched">
                 <small>
-                    {{errorMessages.confPassMessage}} 
+                    not equal
                 </small>
             </div>
-        </div> 
+        </div>
         <div class="phoneContainer">
             <label>phone</label>
-            <input class="phoneInput" type="text">
+            <input class="phoneInput" type="text" formControlName="phoneNumber">
+            <div *ngIf="form.controls.phoneNumber.errors?.['invalidPhoneNumber'] && form.controls.phoneNumber?.touched">
+                <small>
+                    invalid phone number
+                </small>
+            </div>
         </div>
-        <button type="submit">sign up</button>
+        <button type="submit" [disabled]="form?.invalid">sign up</button>
     </form>
 </div>
-
-<!-- <small *ngIf="form.get('password').errors?.required" [errorMessage]="errorMessages.emailMessage"></small>
-<small *ngIf="form.get('password').errors?.required" [errorMessage]="errorMessages.emailMessage"></small> -->

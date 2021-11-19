@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
 
   checkFormValidation() {
     this.form.valueChanges.subscribe((val) => {
-      if(this.form.get('email')?.invalid) {
+      if (this.form.get('email')?.invalid) {
         this.errorMessages.loginMessage = this.handleEmailErrors();
       }
-      if(this.form.get('password')?.invalid) {
+      if (this.form.get('password')?.invalid) {
         this.errorMessages.passwordMessage = this.handlePasswordErrors();
       }
     })
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handlePasswordErrors(): string | void{
+  handlePasswordErrors(): string | void {
     if (this.form.get('password')?.errors?.minlength) {
       return `the length must be at least ${this.form.get('password')?.errors?.minlength?.requiredLength}.
               now the number of simvols ${this.form.get('password')?.errors?.minlength?.actualLength}`

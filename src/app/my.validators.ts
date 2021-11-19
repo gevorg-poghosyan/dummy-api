@@ -1,19 +1,19 @@
 import { FormControl } from "@angular/forms";
 
 export class MyValidators {
-    pass: string;
-    confpass: string;
-
-    constructor(pass: string, confpass: string){
-      this.pass = pass;
-      this.confpass = confpass; 
-    }
    static toCheckedPassword(control: FormControl): {[key: string]: boolean} | null {
-    //    debugger
-    console.log(control);
-    
-       console.log(control.parent?.value['password'] === control.value);
+      if(control.parent?.value['password'] !== control.value) {
+          return {'notSame': true}
+      };
        return null;
        
+   }
+
+   static toCheckedPhoneNumber(control: FormControl) : {[key: string]: boolean } | null {
+       let pattern = /[\+][0-9]{11}/g
+       if(control.value.search(pattern)){
+        return {'invalidPhoneNumber': true}
+       }
+       return null
    }
 }

@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  
+  firebaseConfig : {
+    apiKey: "AIzaSyDhn95WpljP1ssnHNeBCjnRWrisxOwr8gM",
+    authDomain: "auth-angular-a05cb.firebaseapp.com",
+    databaseURL: "https://auth-angular-a05cb-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "auth-angular-a05cb",
+    storageBucket: "auth-angular-a05cb.appspot.com",
+    messagingSenderId: "539389810637",
+    appId: "1:539389810637:web:0ec6e09b8e4a46d2505684",
+    measurementId: "G-M1RZX566S0"
+  }
 };
 
 /*

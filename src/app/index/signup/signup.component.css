@@ -13,3 +13,36 @@
 .passInput.ng-valid.ng-touched {
     border: 1px solid green;
 }
+
+.confPassInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.confPassInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.nameInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.nameInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.surNameInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.surNameInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
+.phoneInput.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.phoneInput.ng-valid.ng-touched {
+    border: 1px solid green;
+}
+
