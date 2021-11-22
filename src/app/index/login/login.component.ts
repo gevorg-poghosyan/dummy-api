@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ export class LoginComponent implements OnInit {
     passwordMessage: ''
   };
 
-  constructor() {
+  constructor(private authService: AuthenticationService,
+    private router: Router) {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -37,9 +40,14 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log('form', this.form);
-    const formData = { ...this.form.value };
-    console.log(formData);
+    this.authService.SignIn(this.form.value.email, this.form.value.password)
+    .then((result) => {
+      this.router.navigate(['home']);
+      console.log((result.user));
+      
+   }).catch((error) => {
+     window.alert(error.message)
+   })
   }
 
   handleEmailErrors(): string | void {
