@@ -5,7 +5,7 @@
             <input class="inputEmail" type="text" placeholder="Email" formControlName="email">
             <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="validation">
                 <!-- <small *ngIf = "form.get('email')?.errors?.required">
-                   email field cannot be empty 
+                   email field cannot be empty
                 </small>
                 <small *ngIf = "form.get('email')?.errors?.email">
                    invalid email address
@@ -21,7 +21,7 @@
             <input class="inputPassword" type="password" placeholder="password" formControlName="password">
             <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="validation">
                 <!-- <small *ngIf = "form.get('password')?.errors?.required">
-                   password field cannot be empty 
+                   password field cannot be empty
                 </small>
                 <small *ngIf = "form.get('password')?.errors?.minlength">
                    the length must be at least {{form.get('password')?.errors?.minlength?.requiredLength}}.
@@ -34,5 +34,6 @@
             </div>
         </div>
         <button class="btn" type="submit" [disabled]="form?.invalid">Submit</button>
+        <button class="btn" type="button" (click)="signOut()">Sign Out</button>
     </form>
 </div>

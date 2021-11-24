@@ -24,13 +24,16 @@ export class SignupComponent {
   }
 
   submit(){ 
-    // localStorage.setItem('user'+new Date().getTime() , JSON.stringify(this.form.value));
-    // let keys = Object.keys(localStorage);
-    // for(let key of keys){
-    //   console.log(localStorage.getItem(key) );
-    // }    
+    localStorage.setItem('user'+new Date().getTime() , JSON.stringify(this.form.value));
+    let keys = Object.keys(localStorage);
+    for(let key of keys){
+      console.log(localStorage.getItem(key) );
+    }    
     this.authService.SignUp(this.form.value.email, this.form.value.password)
     .then((result: any) => {
+      // result.user.updateProfile({
+      //   displayName: this.form.value.name
+      // })
       window.alert("You have been successfully registered!");
       console.log(result.user)
     }).catch((error: any) => {
