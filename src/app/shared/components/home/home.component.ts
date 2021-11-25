@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { CarService } from "../../services/car.service";
 
 @Component({
@@ -8,8 +9,10 @@ import { CarService } from "../../services/car.service";
 })
 export class HomeComponent implements OnInit {
 
-    data: string = '';
-    constructor(private carService: CarService){
+    data: any;
+    dataArray: any;
+    constructor(private carService: CarService,
+                private router: Router){
 
     }
 
@@ -19,9 +22,30 @@ export class HomeComponent implements OnInit {
 
     getCars(){
         this.carService.getAllCars().subscribe(res => {
-            this.data += res;
-            console.log(res);
+            this.data = Object.entries(res);
+            // this.dataArray = Object.values(this.data)
+            console.log(this.data);
             
         });
+        
+    }
+
+    deleteCar(id: string){
+        this.carService.deleteCar(id).subscribe(() => {
+         this.data = this.data.filter((item: any) => {
+          return  item[0]!== id
+         })
+        })
+    }
+
+    editCar(car: any, id:string){
+        // this.carService.editCar(car,id).subscribe((res)=>{
+        //     console.log((res));
+            
+        // })]
+        this.router.navigate(['list'])
+
+
+
     }
 }

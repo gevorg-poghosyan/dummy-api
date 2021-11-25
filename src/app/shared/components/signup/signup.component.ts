@@ -11,67 +11,68 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class SignupComponent {
   form: FormGroup;
 
-  constructor(private authService: AuthenticationService) { 
+  constructor(private authService: AuthenticationService) {
     this.form = new FormGroup({
-     name: new FormControl('', [Validators.required]),
-     surname: new FormControl('', [Validators.required]),
-     email: new FormControl('', [Validators.required, Validators.email]),
-     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-     confirmPassword: new FormControl('', [Validators.required, MyValidators.toCheckedPassword]),
-     phoneNumber: new FormControl('+374', [Validators.required, MyValidators.toCheckedPhoneNumber])
+      name: new FormControl('', [Validators.required]),
+      surname: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required, MyValidators.toCheckedPassword]),
+      phoneNumber: new FormControl('+374', [Validators.required, MyValidators.toCheckedPhoneNumber])
 
     })
   }
 
-  submit(){ 
-    localStorage.setItem('user'+new Date().getTime() , JSON.stringify(this.form.value));
+  submit() {
+    localStorage.setItem('user' + new Date().getTime(), JSON.stringify(this.form.value));
     let keys = Object.keys(localStorage);
-    for(let key of keys){
-      console.log(localStorage.getItem(key) );
-    }    
-    this.authService.SignUp(this.form.value.email, this.form.value.password)
-    .then((result: any) => {
-      // result.user.updateProfile({
-      //   displayName: this.form.value.name
-      // })
-      window.alert("You have been successfully registered!");
-      console.log(result.user)
-    }).catch((error: any) => {
-      window.alert(error.messagingSenderId)
-    })
-    console.log(this.form);
-    
-
+    for (let key of keys) {
+      console.log(localStorage.getItem(key));
     }
-    
-  
-  
+    this.authService.SignUp(this.form.value.email, this.form.value.password)
+      .then((result: any) => {
+        // result.user.updateProfile({
+        //   displayName: this.form.value.name
+        // })
+        console.log(result)
+        window.alert("You have been successfully registered!");
+        console.log(result.user)
+      }).catch((error: any) => {
+        window.alert(error.messagingSenderId)
+      })
+    console.log(this.form);
+
+
+  }
+
+
+
   // checkSignUpFormValidation(){
-    // this.form.valueChanges.subscribe((C)=>{
-    //   console.log(C)
-    //   if(this.form.get('name')?.invalid){
-    //     this.errorMessages.nameMessage = this.handleNameErrors()
-    //     // console.log(this.errorMessages.nameMessage);
-        
-    //   }
+  // this.form.valueChanges.subscribe((C)=>{
+  //   console.log(C)
+  //   if(this.form.get('name')?.invalid){
+  //     this.errorMessages.nameMessage = this.handleNameErrors()
+  //     // console.log(this.errorMessages.nameMessage);
 
-    //   if(this.form.get('surname')?.invalid){
-    //     this.errorMessages.surnameMessage = this.handleSurNameErrors()
-    //   }
+  //   }
 
-    //   if(this.form.get('email')?.invalid){
-    //     this.errorMessages.emailMessage = this.handleEmailErrors()
-    //   }
+  //   if(this.form.get('surname')?.invalid){
+  //     this.errorMessages.surnameMessage = this.handleSurNameErrors()
+  //   }
 
-    //   if(this.form.get('password')?.invalid){
-    //     this.errorMessages.passwordMessage = this.handlePasswordErrors()
-    //   }
-      
-    //   if(this.form.get('confirmPassword')?.invalid){
-    //     this.errorMessages.confirmPassword = this. handleConfPassErrors()
-    //   }
+  //   if(this.form.get('email')?.invalid){
+  //     this.errorMessages.emailMessage = this.handleEmailErrors()
+  //   }
 
-    // })
+  //   if(this.form.get('password')?.invalid){
+  //     this.errorMessages.passwordMessage = this.handlePasswordErrors()
+  //   }
+
+  //   if(this.form.get('confirmPassword')?.invalid){
+  //     this.errorMessages.confirmPassword = this. handleConfPassErrors()
+  //   }
+
+  // })
   // }
 
   // handleNameErrors(): string | void {
@@ -91,7 +92,7 @@ export class SignupComponent {
   //     return 'email field cannot be empty '
   //   }
   // }
-  
+
   // handlePasswordErrors(): string | void{
   //   if (this.form.get('password')?.errors?.required) {
   //     return 'password field cannot be empty '

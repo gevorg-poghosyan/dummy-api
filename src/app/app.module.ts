@@ -6,7 +6,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -18,6 +18,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ListComponent } from './shared/components/list/list.component';
+import { HomeComponent } from './shared/components/home/home.component';
 
 
 
@@ -29,11 +30,13 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ListComponent
+    ListComponent,
+    HomeComponent
       ],
   imports: [
     BrowserModule,
     FormsModule,
+    CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzModalModule,
