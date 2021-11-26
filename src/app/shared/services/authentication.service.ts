@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+  private isAuth = false
   constructor(
     public afAuth: AngularFireAuth
   ) {
@@ -17,12 +17,23 @@ export class AuthenticationService {
   }
 
   SignIn(email : string, password : string) {
+    this.isAuth = true;
     return this.afAuth.signInWithEmailAndPassword(email, password)
   }
 
   SignOut() {
+    this.isAuth = false;
     return this.afAuth.signOut();
   }
+
+  isAuthenticated(): Promise<boolean> {
+    return new Promise(resolve =>{
+      setTimeout(()=>{
+        resolve(this.isAuth)
+      },1000)
+    })
+  }
+
 }
 
 //https://auth-angular-a05cb-default-rtdb.europe-west1.firebasedatabase.app/ + '/posts.json'

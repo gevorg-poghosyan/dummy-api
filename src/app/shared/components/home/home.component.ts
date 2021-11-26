@@ -22,10 +22,7 @@ export class HomeComponent implements OnInit {
 
     getCars(){
         this.carService.getAllCars().subscribe(res => {
-            this.data = Object.entries(res);
-            // this.dataArray = Object.values(this.data)
-            console.log(this.data);
-            
+            this.data = Object.entries(res);      
         });
         
     }

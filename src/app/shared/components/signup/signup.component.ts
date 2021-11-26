@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MyValidators } from 'src/app/my.validators';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
@@ -11,7 +12,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class SignupComponent {
   form: FormGroup;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService,
+    private router: Router) {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       surname: new FormControl('', [Validators.required]),
@@ -26,22 +28,20 @@ export class SignupComponent {
   submit() {
     localStorage.setItem('user' + new Date().getTime(), JSON.stringify(this.form.value));
     let keys = Object.keys(localStorage);
-    for (let key of keys) {
-      console.log(localStorage.getItem(key));
-    }
+    // for (let key of keys) {
+    //   console.log(localStorage.getItem(key));
+    // }
     this.authService.SignUp(this.form.value.email, this.form.value.password)
       .then((result: any) => {
         // result.user.updateProfile({
         //   displayName: this.form.value.name
         // })
-        console.log(result)
+        this.router.navigate(['/login'])
         window.alert("You have been successfully registered!");
-        console.log(result.user)
       }).catch((error: any) => {
         window.alert(error.messagingSenderId)
       })
     console.log(this.form);
-
 
   }
 

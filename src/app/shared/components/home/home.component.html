@@ -1,9 +1,9 @@
 <div class="wraper" *ngFor="let car of data">
     <p>
-        <span>{{car[1].make}}</span>
-        <span>{{car[1].model}}</span>
-        <span>{{car[1].year}}</span>
-        <span>{{car[1].price}}</span>
+        <input value={{car[1].model}} >
+        <input value={{car[1].make}} >
+        <input value={{car[1].year}} >
+        <input value={{car[1].price}} >
         <button (click)="deleteCar(car[0])">delete</button>
         <button (click)="editCar(car[1], car[0])">Edit</button>
     </p>

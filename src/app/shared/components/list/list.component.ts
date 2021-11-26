@@ -17,15 +17,12 @@ export class ListComponent {
         price:0
     };
     constructor(private carService: CarService, private router: Router){
-
     }
-    
+
     onAddCar(){ 
          this.carService.onAddCar(this.car).subscribe(res => {
              console.log(res);
              this.router.navigate(['/home']);
          });
-        
-
     }
 }
