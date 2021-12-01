@@ -26,7 +26,7 @@ export class SignupComponent {
   }
 
   submit() {
-    localStorage.setItem('user' + new Date().getTime(), JSON.stringify(this.form.value));
+
     let keys = Object.keys(localStorage);
     // for (let key of keys) {
     //   console.log(localStorage.getItem(key));
@@ -36,12 +36,13 @@ export class SignupComponent {
         // result.user.updateProfile({
         //   displayName: this.form.value.name
         // })
+        
         this.router.navigate(['/login'])
         window.alert("You have been successfully registered!");
       }).catch((error: any) => {
         window.alert(error.messagingSenderId)
       })
-    console.log(this.form);
+
 
   }
 

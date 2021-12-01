@@ -23,6 +23,7 @@ export class AuthenticationService {
 
   SignOut() {
     this.isAuth = false;
+    localStorage.removeItem('token');
     return this.afAuth.signOut();
   }
 

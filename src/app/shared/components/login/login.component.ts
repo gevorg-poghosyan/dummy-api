@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
@@ -19,10 +19,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   };
 
   constructor(private authService: AuthenticationService,
-    private router: Router) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+      console.log(activatedRoute);
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('l@gmail.com', [Validators.required, Validators.email]),
+      password: new FormControl('000000', [Validators.required, Validators.minLength(6)]),
     })
   }
   
@@ -44,9 +46,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   submit() {
     this.authService.SignIn(this.form.value.email, this.form.value.password)
-    .then((result) => {
+    .then((result:any) => {
       this.router.navigate(['home']);
-      console.log((result));
+      console.log(result);
+      localStorage.setItem('token', result?.user._delegate.accessToken)
       
    }).catch((error) => {
      window.alert(error.message);
@@ -57,8 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   signOut() {
     this.authService.SignOut()
     .then((result) => {
-      this.router.navigate(['']);
-      console.log((result));
+      // this.router.navigate(['']);
       
    }).catch((error) => {
      window.alert(error.message);

@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { Car } from "../../models/car.interface";
+import { AuthenticationService } from "../../services/authentication.service";
 import { CarService } from "../../services/car.service";
 
 @Component({
@@ -9,40 +11,55 @@ import { CarService } from "../../services/car.service";
 })
 export class HomeComponent implements OnInit {
 
-    data: any;
-    dataArray: any;
+    cars: any;
+    carsArray: any;
     constructor(private carService: CarService,
-                private router: Router){
+        private router: Router,
+        private auth: AuthenticationService) {
+            // this.cars = this.carService.changingCar
 
     }
 
     ngOnInit(): void {
-        this.getCars()
+        this.getCars();
+        //lselu mas =====
+        // this.carService.carLengthSubj.subscribe((length: number) => {
+        //     console.log(length)
+        // })
+        // ==============
+        console.log(this.auth.isAuthenticated());
+
     }
 
-    getCars(){
-        this.carService.getAllCars().subscribe(res => {
-            this.data = Object.entries(res);      
+    getCars() {
+        this.carService.getAllCars().subscribe(res => {            
+            this.cars = Object.entries(res);
+
         });
-        
+
     }
 
-    deleteCar(id: string){
+    deleteCar(id: string) {
         this.carService.deleteCar(id).subscribe(() => {
-         this.data = this.data.filter((item: any) => {
-          return  item[0]!== id
-         })
+            this.cars = this.cars.filter((item: any) => {
+                return item[0] !== id
+            })
         })
     }
 
-    editCar(car: any, id:string){
-        // this.carService.editCar(car,id).subscribe((res)=>{
+    editCar(car: any, id: string) {
+        // this.carService.editCar(car, id).subscribe((res) => {
         //     console.log((res));
-            
-        // })]
+
+        // })
+        // console.log(car, id);
+        car.id = id;
+        this.carService.changingCar = car
         this.router.navigate(['list'])
 
+    }
 
-
+    route() {
+        this.router.navigate(['list'])
     }
 }

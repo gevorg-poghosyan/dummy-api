@@ -1,4 +1,5 @@
-<div class="wraper" *ngFor="let car of data">
+<button (click)="route()">+</button>
+<div class="wraper" *ngFor="let car of cars">  
     <p>
         <input value={{car[1].model}} >
         <input value={{car[1].make}} >

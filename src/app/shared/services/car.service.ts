@@ -1,12 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { map } from 'rxjs/operators';
+import { Car } from "../models/car.interface";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CarService {
-
+    // carLengthSubj: Subject<number> = new Subject<number>();
+    changingCar!: Car;
+    
     constructor(private http: HttpClient ) {
 
     }

@@ -17,7 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { ListComponent } from './shared/components/list/list.component';
+import { EditAddCarComponent} from './shared/components/edit-add-car/edit-add-car.component';
 import { HomeComponent } from './shared/components/home/home.component';
 
 
@@ -30,7 +30,7 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ListComponent,
+    EditAddCarComponent,
     HomeComponent
       ],
   imports: [
