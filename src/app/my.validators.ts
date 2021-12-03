@@ -10,7 +10,7 @@ export class MyValidators {
    }
 
    static toCheckedPhoneNumber(control: FormControl) : {[key: string]: boolean } | null {
-       let pattern = /[\+][0-9]{11}/g
+       let pattern = /[\+374][0-9]{11}$/g
        if(control.value.search(pattern)){
         return {'invalidPhoneNumber': true}
        }

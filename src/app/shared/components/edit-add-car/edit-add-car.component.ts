@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Car } from "../../models/car.interface";
 import { CarService } from "../../services/car.service";
@@ -9,7 +9,7 @@ import { CarService } from "../../services/car.service";
     templateUrl: './edit-add-car.component.html',
     styleUrls: ['./edit-add-car.component.css']
 })
-export class EditAddCarComponent {
+export class EditAddCarComponent implements OnInit, OnDestroy {
     car: Car = {
         make: '',
         model: '',
@@ -29,9 +29,10 @@ export class EditAddCarComponent {
 
     onAddCar() {
         
-        this.carService.onAddCar(this.car).subscribe(res => {
+        this.carService.onAddCar(this.car).subscribe(() => {
             //signal uxarkelu mas
             // this.carService.carLengthSubj.next(10);
+            
             this.router.navigate(['/home'])
         });
     }
@@ -45,5 +46,9 @@ export class EditAddCarComponent {
           
        })
         
+    }
+
+    ngOnDestroy() { 
+        this.carService.changingCar = undefined;
     }
 }

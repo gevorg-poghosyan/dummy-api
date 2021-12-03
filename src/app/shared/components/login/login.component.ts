@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   signOut() {
     this.authService.SignOut()
     .then((result) => {
-      // this.router.navigate(['']);
+      this.router.navigate(['login']);
       
    }).catch((error) => {
      window.alert(error.message);

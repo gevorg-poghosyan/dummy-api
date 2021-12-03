@@ -9,14 +9,14 @@ import { Car } from "../models/car.interface";
 })
 export class CarService {
     // carLengthSubj: Subject<number> = new Subject<number>();
-    changingCar!: Car;
+    changingCar: Car | undefined;
     
     constructor(private http: HttpClient ) {
 
     }
 
     onAddCar(car: any) {
-       return this.http.post('https://auth-angular-a05cb-default-rtdb.europe-west1.firebasedatabase.app/posts.json', car)
+       return this.http.post('https://auth-angular-a05cb-default-rtdb.europe-west1.firebasedatabase.app/posts.json', car);
       }
 
       getAllCars(): Observable<any>{
